@@ -80,8 +80,7 @@ public class ChildBeanDefinition extends AbstractBeanDefinition {
 	 * @param cargs the constructor argument values to apply
 	 * @param pvs the additional property values of the child
 	 */
-	public ChildBeanDefinition(
-			String parentName, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
+	public ChildBeanDefinition(String parentName, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
 
 		super(cargs, pvs);
 		this.parentName = parentName;
@@ -95,8 +94,7 @@ public class ChildBeanDefinition extends AbstractBeanDefinition {
 	 * @param cargs the constructor argument values to apply
 	 * @param pvs the property values to apply
 	 */
-	public ChildBeanDefinition(
-			String parentName, Class<?> beanClass, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
+	public ChildBeanDefinition(String parentName, Class<?> beanClass, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
 
 		super(cargs, pvs);
 		this.parentName = parentName;
@@ -112,8 +110,7 @@ public class ChildBeanDefinition extends AbstractBeanDefinition {
 	 * @param cargs the constructor argument values to apply
 	 * @param pvs the property values to apply
 	 */
-	public ChildBeanDefinition(
-			String parentName, String beanClassName, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
+	public ChildBeanDefinition(String parentName, String beanClassName, ConstructorArgumentValues cargs, MutablePropertyValues pvs) {
 
 		super(cargs, pvs);
 		this.parentName = parentName;

@@ -119,23 +119,24 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 * This implementation performs an actual refresh of this context's underlying
 	 * bean factory, shutting down the previous bean factory (if any) and
 	 * initializing a fresh bean factory for the next phase of the context's lifecycle.
+	 * 此实现对此上下文的基础bean工厂执行实际的刷新，关闭前一个bean工厂（如果有），并为上下文生命周期的下一阶段初始化一个新的bean工厂。
+	 * 然后调子类实现加载beanDefinition
 	 */
 	@Override
 	protected final void refreshBeanFactory() throws BeansException {
-		if (hasBeanFactory()) {
+		if (hasBeanFactory()) {    //如果存在bean工厂，销毁工厂的所有bean并关闭工厂
 			destroyBeans();
-			closeBeanFactory();
+			closeBeanFactory();  //关闭工厂。实现很简单,将引用指为null即可
 		}
 		try {
-			DefaultListableBeanFactory beanFactory = createBeanFactory();
+			DefaultListableBeanFactory beanFactory = createBeanFactory();  // 创建bean工厂:DefaultListableBeanFactory
 			beanFactory.setSerializationId(getId());
-			customizeBeanFactory(beanFactory);
-			loadBeanDefinitions(beanFactory);
+			customizeBeanFactory(beanFactory);    // 将创建的bean工厂设置为此上下文应用的默认bean工厂
+			loadBeanDefinitions(beanFactory);    // 加载beanDefinition。由子类实现，如：XmlApplicationContext
 			synchronized (this.beanFactoryMonitor) {
 				this.beanFactory = beanFactory;
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new ApplicationContextException("I/O error parsing bean definition source for " + getDisplayName(), ex);
 		}
 	}
@@ -208,7 +209,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	}
 
 	/**
-	 * Customize the internal bean factory used by this context.
+	 * Customize the internal bean factory used by this context. 定制此上下文使用的内部bean工厂。
 	 * Called for each {@link #refresh()} attempt.
 	 * <p>The default implementation applies this context's
 	 * {@linkplain #setAllowBeanDefinitionOverriding "allowBeanDefinitionOverriding"}
@@ -223,16 +224,17 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 */
 	protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
 		if (this.allowBeanDefinitionOverriding != null) {
-			beanFactory.setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);
+			beanFactory.setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);  //设置是否允许BeanDefinition重写
 		}
 		if (this.allowCircularReferences != null) {
-			beanFactory.setAllowCircularReferences(this.allowCircularReferences);
+			beanFactory.setAllowCircularReferences(this.allowCircularReferences);  //设置是否允许循环引用
 		}
 	}
 
 	/**
 	 * Load bean definitions into the given bean factory, typically through
 	 * delegating to one or more bean definition readers.
+	 * 通常通过委派一个或多个bean definiton reader，将bean定义加载到给定的bean工厂中。
 	 * @param beanFactory the bean factory to load bean definitions into
 	 * @throws BeansException if parsing of the bean definitions failed
 	 * @throws IOException if loading of bean definition files failed

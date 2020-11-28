@@ -105,8 +105,7 @@ public class ServletContextResourcePatternResolver extends PathMatchingResourceP
 	 * @see ServletContextResource
 	 * @see javax.servlet.ServletContext#getResourcePaths
 	 */
-	protected void doRetrieveMatchingServletContextResources(
-			ServletContext servletContext, String fullPattern, String dir, Set<Resource> result)
+	protected void doRetrieveMatchingServletContextResources(ServletContext servletContext, String fullPattern, String dir, Set<Resource> result)
 			throws IOException {
 
 		Set<String> candidates = servletContext.getResourcePaths(dir);

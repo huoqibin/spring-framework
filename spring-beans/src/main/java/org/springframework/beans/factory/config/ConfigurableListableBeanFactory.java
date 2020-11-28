@@ -155,6 +155,9 @@ public interface ConfigurableListableBeanFactory
 	 * @throws BeansException if one of the singleton beans could not be created.
 	 * Note: This may have left the factory with some beans already initialized!
 	 * Call {@link #destroySingletons()} for full cleanup in this case.
+	 * 确保所有非延迟初始单例都实例化，同时考虑{@link org.springframework.beans.factory.FactoryBean FactoryBeans}。
+	 * 如果需要，通常在工厂设置结束时调用。 如果无法创建一个单例bean会抛出BeansException
+	 * 注意：这可能已经离开工厂，并且已经初始化了一些bean！在这种情况下，请调用{@link #destroySingletons（）}进行全面清理。
 	 * @see #destroySingletons()
 	 */
 	void preInstantiateSingletons() throws BeansException;

@@ -78,6 +78,7 @@ public class FileSystemXmlApplicationContext extends AbstractXmlApplicationConte
 	/**
 	 * Create a new FileSystemXmlApplicationContext, loading the definitions
 	 * from the given XML file and automatically refreshing the context.
+	 * 创建一个新的FileSystemXmlApplicationContext，从给定的XML文件中加载定义，并自动刷新上下文。
 	 * @param configLocation file path
 	 * @throws BeansException if context creation failed
 	 */
@@ -99,6 +100,7 @@ public class FileSystemXmlApplicationContext extends AbstractXmlApplicationConte
 	 * Create a new FileSystemXmlApplicationContext with the given parent,
 	 * loading the definitions from the given XML files and automatically
 	 * refreshing the context.
+	 * 使用给定的父级创建一个新的FileSystemXmlApplicationContext，从给定的XML文件中加载定义，并自动刷新上下文。
 	 * @param configLocations array of file paths
 	 * @param parent the parent context
 	 * @throws BeansException if context creation failed

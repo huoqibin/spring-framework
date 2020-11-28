@@ -127,6 +127,9 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * creating a new MutablePropertyValues instance based on the original PropertyValues,
 	 * adding or removing specific values.
 	 * <p>The default implementation returns the given {@code pvs} as-is.
+	 * 在工厂将它们应用于给定bean之前，对给定属性值进行后处理。 允许检查是否满足所有依赖性，例如，基于bean属性设置器上的“Required”注释。
+	 * 还允许替换要应用的属性值，通常是通过基于原始PropertyValues创建新的MutablePropertyValues实例，添加或删除特定值来实现。
+	 * 默认实现按原样返回给定的{@code pvs}。
 	 * @param pvs the property values that the factory is about to apply (never {@code null})
 	 * @param pds the relevant property descriptors for the target bean (with ignored
 	 * dependency types - which the factory handles specifically - already filtered out)

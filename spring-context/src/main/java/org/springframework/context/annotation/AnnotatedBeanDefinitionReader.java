@@ -180,8 +180,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * in addition to qualifiers at the bean class level
 	 */
 	@SuppressWarnings("unchecked")
-	public void registerBean(Class<?> annotatedClass, @Nullable String name,
-			Class<? extends Annotation>... qualifiers) {
+	public void registerBean(Class<?> annotatedClass, @Nullable String name, Class<? extends Annotation>... qualifiers) {
 
 		doRegisterBean(annotatedClass, name, qualifiers, null, null);
 	}
@@ -226,8 +225,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
 	 * @since 5.2
 	 */
-	public <T> void registerBean(Class<T> annotatedClass, @Nullable String name, @Nullable Supplier<T> supplier,
-			BeanDefinitionCustomizer... customizers) {
+	public <T> void registerBean(Class<T> annotatedClass, @Nullable String name, @Nullable Supplier<T> supplier, BeanDefinitionCustomizer... customizers) {
 
 		doRegisterBean(annotatedClass, name, null, supplier, customizers);
 	}
@@ -245,9 +243,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
 	 * @since 5.0
 	 */
-	private <T> void doRegisterBean(Class<T> annotatedClass, @Nullable String name,
-			@Nullable Class<? extends Annotation>[] qualifiers, @Nullable Supplier<T> supplier,
-			@Nullable BeanDefinitionCustomizer[] customizers) {
+	private <T> void doRegisterBean(Class<T> annotatedClass, @Nullable String name, @Nullable Class<? extends Annotation>[] qualifiers, @Nullable Supplier<T> supplier, @Nullable BeanDefinitionCustomizer[] customizers) {
 
 		AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(annotatedClass);
 		if (this.conditionEvaluator.shouldSkip(abd.getMetadata())) {

@@ -176,6 +176,7 @@ public abstract class WebApplicationContextUtils {
 	/**
 	 * Register web-specific scopes ("request", "session", "globalSession", "application")
 	 * with the given BeanFactory, as used by the WebApplicationContext.
+	 * 给定BeanFactory注册特定于Web的范围 ("request", "session", "globalSession", "application") 。
 	 * @param beanFactory the BeanFactory to configure
 	 * @param sc the ServletContext that we're running within
 	 */
@@ -188,6 +189,7 @@ public abstract class WebApplicationContextUtils {
 			ServletContextScope appScope = new ServletContextScope(sc);
 			beanFactory.registerScope(WebApplicationContext.SCOPE_APPLICATION, appScope);
 			// Register as ServletContext attribute, for ContextCleanupListener to detect it.
+			// 注册为ServletContext属性，以便ContextCleanupListener检测它。
 			sc.setAttribute(ServletContextScope.class.getName(), appScope);
 		}
 
@@ -213,6 +215,7 @@ public abstract class WebApplicationContextUtils {
 	/**
 	 * Register web-specific environment beans ("contextParameters", "contextAttributes")
 	 * with the given BeanFactory, as used by the WebApplicationContext.
+	 * 使用WebApplicationContext所使用的给定BeanFactory注册特定于Web的环境Bean（“ contextParameters”，“ contextAttributes”）。
 	 * @param bf the BeanFactory to configure
 	 * @param servletContext the ServletContext that we're running within
 	 * @param servletConfig the ServletConfig

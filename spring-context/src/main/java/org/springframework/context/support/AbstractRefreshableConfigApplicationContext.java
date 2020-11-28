@@ -72,6 +72,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	/**
 	 * Set the config locations for this application context.
 	 * <p>If not set, the implementation may use a default as appropriate.
+	 * 设置此应用程序上下文的配置位置。如果未设置，则实现可酌情使用默认值。
 	 */
 	public void setConfigLocations(@Nullable String... locations) {
 		if (locations != null) {
@@ -92,6 +93,8 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	 * patterns, which will get resolved via a ResourcePatternResolver.
 	 * <p>The default implementation returns {@code null}. Subclasses can override
 	 * this to provide a set of resource locations to load bean definitions from.
+	 * 返回一个资源位置数组，引用此上下文应使用的XML bean定义文件。 还可以包括位置模式，这将通过ResourcePatternResolver进行解析。
+	 * 默认实现返回{@code null}。 子类可以重写此方法，以提供一组资源位置以从中加载bean定义。
 	 * @return an array of resource locations, or {@code null} if none
 	 * @see #getResources
 	 * @see #getResourcePatternResolver

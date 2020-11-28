@@ -27,6 +27,7 @@ public interface LifecycleProcessor extends Lifecycle {
 
 	/**
 	 * Notification of context refresh, e.g. for auto-starting components.
+	 * 上下文刷新通知，例如自动启动组件。
 	 */
 	void onRefresh();
 
